@@ -1,0 +1,351 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Danh thiếp Tiệp VIVINA</title>
+<style>
+  :root{
+    --bg:#F6F1E7;
+    --surface:#FFFFFF;
+    --ink:#1B2A41;
+    --ink-soft:#5B6B81;
+    --line:#E4DCC9;
+    --accent:#B9862F;
+    --accent-soft:#F1E2C2;
+    --header-a:#0F2038;
+    --header-b:#1E4066;
+    --ring:#D9A441;
+    color-scheme:light;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0B0F17;
+      --surface:#141B29;
+      --ink:#F1ECDD;
+      --ink-soft:#9AA7BC;
+      --line:#26314A;
+      --accent:#E7B65B;
+      --accent-soft:#2A2415;
+      --header-a:#060B14;
+      --header-b:#102135;
+      --ring:#E7B65B;
+      color-scheme:dark;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0B0F17;
+    --surface:#141B29;
+    --ink:#F1ECDD;
+    --ink-soft:#9AA7BC;
+    --line:#26314A;
+    --accent:#E7B65B;
+    --accent-soft:#2A2415;
+    --header-a:#060B14;
+    --header-b:#102135;
+    --ring:#E7B65B;
+    color-scheme:dark;
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Work Sans", system-ui, -apple-system, sans-serif;
+    display:flex;
+    justify-content:center;
+    padding-inline:16px;
+    padding-block:32px;
+  }
+  .card{
+    width:100%;
+    max-width:420px;
+    background:var(--surface);
+    border-radius:22px;
+    overflow:hidden;
+    box-shadow:0 18px 48px -24px rgba(15,32,56,.35);
+    border:1px solid var(--line);
+  }
+  .header{
+    background:linear-gradient(160deg, var(--header-a), var(--header-b));
+    padding:36px 24px 28px;
+    text-align:center;
+    color:#F6F1E7;
+  }
+  .avatar{
+    width:88px;height:88px;border-radius:50%;
+    margin:0 auto 16px;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--accent-soft);
+    border:3px solid var(--ring);
+    font-family:"Fraunces", Georgia, serif;
+    font-size:32px;font-weight:600;
+    color:var(--header-a);
+  }
+  .name{
+    font-family:"Fraunces", Georgia, serif;
+    font-size:26px;
+    font-weight:600;
+    margin:0 0 4px;
+    text-wrap:balance;
+  }
+  .title{
+    margin:0;
+    font-size:12px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--ring);
+    font-weight:600;
+  }
+  .actions{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+    padding:18px 20px 4px;
+  }
+  .action{
+    display:flex;flex-direction:column;align-items:center;gap:6px;
+    padding:12px 4px;
+    border-radius:14px;
+    background:var(--accent-soft);
+    color:var(--ink);
+    text-decoration:none;
+    font-size:12px;
+    font-weight:600;
+    border:1px solid var(--line);
+    transition:transform .15s ease;
+  }
+  .action:active{ transform:scale(.96); }
+  .action svg{ width:20px;height:20px; stroke:var(--accent); }
+
+  .list{
+    padding:8px 20px 24px;
+    display:flex;
+    flex-direction:column;
+  }
+  .row{
+    display:flex;
+    align-items:flex-start;
+    gap:14px;
+    padding:14px 0;
+    border-bottom:1px solid var(--line);
+    text-decoration:none;
+    color:var(--ink);
+  }
+  .row:last-child{ border-bottom:none; }
+  .row-icon{
+    width:36px;height:36px;flex:none;
+    border-radius:10px;
+    background:var(--accent-soft);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .row-icon svg{ width:18px;height:18px; stroke:var(--accent); }
+  .row-body{ flex:1; min-width:0; }
+  .row-label{
+    font-size:11px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin:0 0 2px;
+  }
+  .row-value{
+    font-size:15px;
+    font-weight:600;
+    margin:0;
+    word-break:break-word;
+    font-variant-numeric:tabular-nums;
+  }
+  .row-sub{
+    font-size:12px;
+    color:var(--ink-soft);
+    margin:2px 0 0;
+  }
+  .copy-btn{
+    flex:none;
+    align-self:center;
+    border:1px solid var(--line);
+    background:transparent;
+    color:var(--ink-soft);
+    font-size:11px;
+    font-weight:600;
+    padding:6px 10px;
+    border-radius:999px;
+    cursor:pointer;
+  }
+  .copy-btn:active{ background:var(--accent-soft); color:var(--ink); }
+
+  .social-block{ padding:16px 0 8px; }
+  .social-label{
+    font-size:11px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin:0 0 12px;
+  }
+  .social-icons{ display:flex; gap:12px; }
+  .social-icon{
+    width:44px;height:44px;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    background:#1877F2;
+    box-shadow:0 4px 10px -4px rgba(24,119,242,.6);
+    transition:transform .15s ease;
+  }
+  .social-icon:active{ transform:scale(.92); }
+  .social-icon svg{ width:22px;height:22px; }
+  .zalo-mark{
+    color:#fff;
+    font-family:"Work Sans", system-ui, sans-serif;
+    font-weight:700;
+    font-size:10px;
+    letter-spacing:-.02em;
+  }
+
+  .foot{
+    text-align:center;
+    font-size:11px;
+    color:var(--ink-soft);
+    padding:0 20px 22px;
+  }
+  .foot a{ color:var(--accent); font-weight:600; text-decoration:none; }
+
+  .toast{
+    position:fixed;
+    left:50%;
+    bottom:24px;
+    transform:translate(-50%,12px);
+    background:var(--header-a);
+    color:#F6F1E7;
+    padding:8px 16px;
+    border-radius:999px;
+    font-size:12px;
+    font-weight:600;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .2s ease, transform .2s ease;
+  }
+  .toast.show{ opacity:1; transform:translate(-50%,0); }
+</style>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap">
+
+<div class="card">
+  <div class="header">
+    <div class="avatar">TV</div>
+    <p class="name">TIỆP VIVINA</p>
+    <p class="title">Leader</p>
+  </div>
+
+  <div class="actions">
+    <a class="action" href="tel:+84915376231">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      Gọi
+    </a>
+    <a class="action" href="mailto:toasangcuocsongmoi@gmail.com">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg>
+      Email
+    </a>
+    <a class="action" href="https://www.google.com/maps/search/?api=1&query=S%E1%BB%91%2050%20Quang%20Trung%2C%20Ph%C6%B0%E1%BB%9Dng%20L%C3%A2m%20Vi%C3%AAn%2C%20L%C3%A2m%20%C4%90%E1%BB%93ng" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+      Chỉ đường
+    </a>
+  </div>
+
+  <div class="list">
+    <a class="row" href="tel:+84915376231">
+      <span class="row-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      </span>
+      <span class="row-body">
+        <p class="row-label">Di động</p>
+        <p class="row-value">0915 376 231</p>
+      </span>
+      <button type="button" class="copy-btn" data-copy="0915376231">Sao chép</button>
+    </a>
+
+    <a class="row" href="mailto:toasangcuocsongmoi@gmail.com">
+      <span class="row-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg>
+      </span>
+      <span class="row-body">
+        <p class="row-label">Email</p>
+        <p class="row-value">toasangcuocsongmoi@gmail.com</p>
+      </span>
+      <button type="button" class="copy-btn" data-copy="toasangcuocsongmoi@gmail.com">Sao chép</button>
+    </a>
+
+    <span class="row">
+      <span class="row-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+      </span>
+      <span class="row-body">
+        <p class="row-label">Công việc</p>
+        <p class="row-value">VIVINA - Nền tảng số quốc gia</p>
+      </span>
+    </span>
+
+    <a class="row" href="https://www.google.com/maps/search/?api=1&query=S%E1%BB%91%2050%20Quang%20Trung%2C%20Ph%C6%B0%E1%BB%9Dng%20L%C3%A2m%20Vi%C3%AAn%2C%20L%C3%A2m%20%C4%90%E1%BB%93ng" target="_blank" rel="noopener">
+      <span class="row-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+      </span>
+      <span class="row-body">
+        <p class="row-label">Địa chỉ</p>
+        <p class="row-value">Số 50 Quang Trung, Phường Lâm Viên, Lâm Đồng</p>
+        <p class="row-sub">Xem trên bản đồ →</p>
+      </span>
+    </a>
+
+    <div class="social-block">
+      <p class="social-label">Mạng xã hội</p>
+      <div class="social-icons">
+        <a class="social-icon" href="https://facebook.com/people/N%E1%BB%81n-T%E1%BA%A3ng-S%E1%BB%91-Qu%E1%BB%91c-Gia-Vivina/61594372235402/" target="_blank" rel="noopener" aria-label="Facebook - Nền Tảng Số Quốc Gia VIVINA">
+          <svg viewBox="0 0 24 24"><path fill="#fff" d="M13.5 21v-7.2h2.4l.36-2.8h-2.76v-1.79c0-.81.22-1.36 1.39-1.36h1.48V5.34C15.9 5.24 15.02 5.16 14 5.16c-2.13 0-3.59 1.3-3.59 3.68v2.06H8v2.8h2.41V21z"/></svg>
+        </a>
+        <a class="social-icon" style="background:#0068FF;" href="https://zalo.me/0915376231" target="_blank" rel="noopener" aria-label="Zalo - 0915 376 231">
+          <span class="zalo-mark">Zalo</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <p class="foot">Quét mã QR bất cứ lúc nào để mở lại trang này · <a href="mailto:toasangcuocsongmoi@gmail.com">Liên hệ VIVINA</a></p>
+</div>
+
+<div class="toast" id="toast">Đã sao chép</div>
+
+<script>
+  var toast = document.getElementById('toast');
+  var toastTimer;
+  function showToast(msg){
+    toast.textContent = msg;
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toast.classList.remove('show'); }, 1600);
+  }
+  document.querySelectorAll('.copy-btn').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      var text = btn.getAttribute('data-copy');
+      function fallbackCopy(){
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        try{ document.execCommand('copy'); }catch(err){}
+        document.body.removeChild(ta);
+      }
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(function(){
+          showToast('Đã sao chép');
+        }).catch(function(){
+          fallbackCopy();
+          showToast('Đã sao chép');
+        });
+      } else {
+        fallbackCopy();
+        showToast('Đã sao chép');
+      }
+    });
+  });
+</script>
+
+</body></html>
